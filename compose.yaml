@@ -1,0 +1,37 @@
+x-common-service-config: &common-service-config
+  image: pcarmona/ddaychile-release:latest
+  restart: always
+  stdin_open: true
+  tty: true
+  network_mode: host
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10M"
+      max-file: 100
+
+services:
+
+  publico:
+    <<: *common-service-config
+    volumes:
+      - ./dday5-server/maps:/usr/local/share/q2pro/dday/maps:ro
+      - ./dday5-server/files/publico:/home/ubuntu/.q2pro/dday
+
+  bots:
+    <<: *common-service-config
+    volumes:
+      - ./dday5-server/maps:/usr/local/share/q2pro/dday/maps:ro
+      - ./dday5-server/files/bots:/home/ubuntu/.q2pro/dday
+
+  duelos:
+    <<: *common-service-config
+    volumes:
+      - ./dday5-server/maps:/usr/local/share/q2pro/dday/maps:ro
+      - ./dday5-server/files/duelos:/home/ubuntu/.q2pro/dday
+
+  duelos2:
+    <<: *common-service-config
+    volumes:
+      - ./dday5-server/maps:/usr/local/share/q2pro/dday/maps:ro
+      - ./dday5-server/files/duelos2:/home/ubuntu/.q2pro/dday
