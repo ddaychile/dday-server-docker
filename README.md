@@ -13,6 +13,7 @@ How to use this image
 The maps to be used by the server must be put in maps/ sub-directory and the config files in the files/ sub-directory.
 
 - compose.yaml
+```
 - dday5-server/
   |- files/
   |  |-- maps.lst
@@ -24,8 +25,11 @@ The maps to be used by the server must be put in maps/ sub-directory and the con
      |- dday1.bsp
      |- dday2.bsp
      ...
+```
+
 The compose.yaml file should be like this
 
+```
 services:
 
   dday5-server:
@@ -42,6 +46,8 @@ services:
       options:
         max-size: "10M"
         max-file: 100
+```
 Finally run using Docker Compose:
-
+```
 docker compose up -d dday5-server
+```
